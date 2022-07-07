@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+    <script>
+        //post方式
+        axios({
+            method:"POST",
+            url:"http://localhost:8080/Demo1/axiosServlet",
+            data:"username=zhangsan"
+        }).then(function (resp){
+            alert(resp.data)
+        })
+
+        //get方式
+        axios({
+            method:"Get",
+            url:"http://localhost:8080/Demo1/axiosServlet？username=zhangsan"
+        }).then(function (resp){
+            alert(resp.data)
+        })
+
+
+
+        //简化
+        axios.get("http://localhost:8080/Demo1/axiosServlet？username=zhangsan").then(function (resp) {
+            alert(resp.data)
+        })
+
+        axios.post("http://localhost:8080/Demo1/axiosServlet","username=zhangsan").then(function (resp) {
+            alert(resp.data)
+        })
+
+    </script>
+
+</body>
+</html>

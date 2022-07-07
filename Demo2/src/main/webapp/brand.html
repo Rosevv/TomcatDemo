@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="css/brand.css">
+    <script src="js/vue.js"></script>
+    <script src="js/axios.js"></script>
+</head>
+<body>
+<div id="app">
+  <table id="brand_table">
+        <tr id="table-tr">
+            <th>序号</th>
+            <th>品牌名称</th>
+            <th>企业名称</th>
+            <th>排序</th>
+            <th>品牌介绍</th>
+            <th>状态</th>
+        </tr>
+        <tr v-for="(brand,i) in brands">
+            <td>{{i+1}}</td>
+            <td>{{brand.brandName}}</td>
+            <td>{{brand.companyName}}</td>
+            <td>{{brand.ordered}}</td>
+            <td>{{brand.description}}</td>
+            <td>{{brand.status}}</td>
+            <td><a href="#">添加</a></td>
+        </tr>
+    </table>
+</div>
+
+
+<script>
+  new Vue({
+    el:"#app",
+    data(){
+      return{
+        brands:[]
+      }
+    },
+    mounted(){
+      var _this=this;
+
+      axios({
+        method:"POST",
+        url:"http://localhost:8080/Demo2/SelectAllServlet",
+        data:""
+      }).then(function (resp) {
+          _this.brands=resp.data;
+      })
+    }
+
+  })
+</script>
+
+</body>
+</html>

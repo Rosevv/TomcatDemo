@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+
+
+  <input v-model="username">
+  {{username}}
+  <hr>
+  <a v-bind:href="url">百度</a><br><!--简化  <a :href="url">百度</a>                        -->
+  <hr>
+  <input type="button" v-on:click="show()" value="按钮"><!--简化  @click=“show()”  -->
+  <hr>
+  <input v-model="count">
+  <div v-if="count==1">v-if-1</div>
+  <div v-else-if="count==2">v-if-2</div>
+  <div v-else>v-if-3</div>
+  <div v-show="count==1">v-show</div>
+
+  <hr>
+  <div v-for="addr in addrs">
+    {{addr}}
+  </div>
+
+  <div v-for="(addr,i) in addrs">
+    {{i}}---{{addr}}
+  </div>
+
+
+
+
+</div>
+
+<script>
+  new Vue({
+    el:"#app",
+    data(){
+      return{
+        username:"",
+        url:"http://www.baidu.com",
+        count:2,
+        addrs:["济南","青岛","烟台","临沂"]
+      }
+    },
+    methods:{
+      show(){
+        alert("点击事件")
+      }
+    },
+    mounted(){
+      alert("挂载完成")
+    }
+  });
+
+</script>
+</body>
+</html>
